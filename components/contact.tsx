@@ -41,7 +41,7 @@ export function Contact() {
             </div>
             <p className="mt-4 max-w-md text-muted-foreground">
               Internship opportunity, question about a project, or just want
-              to say hi - I'd love to hear from you.
+              to say hi - I&apos;d love to hear from you.
             </p>
 
             <div className="mt-8 flex items-center gap-2">

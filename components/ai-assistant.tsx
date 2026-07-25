@@ -6,6 +6,7 @@ import { BotMessageSquare, MessageCircle, Send, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/portfolio";
+import { fallbackAnswer } from "@/lib/chat-fallback";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -90,28 +91,11 @@ export function AiAssistant() {
 
     setLoading(true);
 
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages }),
-      });
-      const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.reply ?? "Something went wrong - please try again." },
-      ]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "I couldn't reach the server. Please try again in a moment.",
-        },
-      ]);
-    } finally {
-      setLoading(false);
-    }
+    // Simulated delay keeps the typing indicator feeling natural - matching
+    // itself is instant since it all runs client-side (no server needed).
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    setMessages((prev) => [...prev, { role: "assistant", content: fallbackAnswer(trimmed) }]);
+    setLoading(false);
   }
 
   return (

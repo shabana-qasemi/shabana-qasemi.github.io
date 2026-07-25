@@ -1,10 +1,10 @@
 # Portfolio
 
-A production-ready developer portfolio built with Next.js (App Router), TypeScript, Tailwind CSS, Framer Motion, and Radix UI primitives.
+A production-ready developer portfolio built with Next.js (App Router), TypeScript, Tailwind CSS, Framer Motion, and Radix UI primitives. Deployed as a static site to GitHub Pages.
 
 ## Stack
 
-- **Framework:** Next.js 15 (App Router) + React 19 + TypeScript
+- **Framework:** Next.js 15 (App Router, static export) + React 19 + TypeScript
 - **Styling:** Tailwind CSS with CSS-variable-based theming (light/dark)
 - **Components:** shadcn/ui-style primitives on top of Radix UI (`components/ui/`)
 - **Animation:** Framer Motion (scroll reveals, hover states, mobile menu transitions)
@@ -18,20 +18,28 @@ app/
   layout.tsx          Root layout: fonts, metadata, ThemeProvider
   page.tsx             Composes all sections
   globals.css          Design tokens (light/dark) + base styles
-  api/chat/route.ts    Chat endpoint for the AI assistant widget
 components/
-  navbar.tsx, hero.tsx, about.tsx, projects.tsx, project-card.tsx,
-  experience.tsx, skills.tsx, contact.tsx, footer.tsx,
+  navbar.tsx, hero.tsx, about.tsx, education.tsx, experience.tsx,
+  projects.tsx, project-card.tsx, leadership.tsx, skills.tsx,
+  recommendations.tsx, contact.tsx, footer.tsx,
   ai-assistant.tsx, theme-toggle.tsx, theme-provider.tsx
-  ui/                  Reusable primitives: button, badge, card, dialog
+  ui/                  Reusable primitives: button, badge, card, dialog,
+                       section-heading, section-divider
 data/
-  portfolio.ts         ALL editable content — projects, experience, skills,
+  portfolio.ts         ALL editable content - projects, experience, skills,
                        socials, resume link, chat assistant FAQ
+lib/
+  chat-fallback.ts     Keyword-matching logic for the AI assistant widget
+                       (runs entirely in the browser - no server needed)
 public/
-  resume.pdf           Placeholder — replace with your real resume
+  resume.pdf           Placeholder - replace with your real resume
+.github/workflows/
+  deploy.yml           Builds and publishes to GitHub Pages on every push to main
 ```
 
 **To edit content** (projects, bullet points, links, experience, skills), only touch `data/portfolio.ts`. You should never need to edit component files for text changes.
+
+**Note on the AI assistant:** it answers using simple keyword matching against `assistantFaq` in `data/portfolio.ts` - entirely in the browser, no backend involved. That's a deliberate trade-off for being able to host on GitHub Pages (a static host with no server-side code at all). If you ever want it to understand any phrasing via a real LLM call, that requires a host that can run server code (like Vercel) to keep an API key secret.
 
 ## Setup
 
@@ -78,38 +86,33 @@ npm run typecheck
 npm run lint
 ```
 
-### 5. Production build
+### 5. Production build (static export)
 
 ```bash
 npm run build
-npm run start
 ```
+
+Output goes to the `out/` folder - a fully static site you could open directly in a browser or upload anywhere.
 
 ## Personalizing your content
 
 1. Open `data/portfolio.ts` and replace:
-   - `personalInfo` — name, role, bio, location, email, GitHub, LinkedIn
-   - `projects` — your real projects, tech stacks, metrics, and links
-   - `experience` — your internships/roles and bullet points
-   - `skillCategories` — adjust to your actual stack
-   - `assistantFaq` — the fallback answers for the chat widget
+   - `personalInfo` - name, role, bio, location, email, GitHub, LinkedIn
+   - `projects` - your real projects, tech stacks, metrics, and links
+   - `experience` - your internships/roles and bullet points
+   - `skillCategories` - adjust to your actual stack
+   - `assistantFaq` - the fallback answers for the chat widget
 2. Replace `public/resume.pdf` with your actual resume (same filename, or update `personalInfo.resumeUrl`).
-3. (Optional) Set `ANTHROPIC_API_KEY` in a `.env.local` file (see `.env.example`) to have the "Ask My AI Portfolio Assistant" widget answer with a real LLM call grounded in your portfolio data, instead of the built-in keyword-matched fallback. The site works fully without this key.
 
-## Deploying
+## Deploying (GitHub Pages)
 
-### Vercel (recommended, zero-config)
+This repo is meant to be named exactly `<your-github-username>.github.io` - that's what gives you the clean root URL (e.g. `https://shabana-qasemi.github.io`) instead of a project-page URL with a path suffix.
 
-```bash
-npm i -g vercel
-vercel
-```
+1. Push to the `main` branch of that repo.
+2. In the repo's **Settings → Pages**, set "Build and deployment → Source" to **GitHub Actions** (one-time setup).
+3. The included workflow (`.github/workflows/deploy.yml`) builds the static export and publishes it automatically on every push to `main`.
 
-Or connect the GitHub repo at [vercel.com/new](https://vercel.com/new) — it auto-detects Next.js.
-
-### GitHub Pages / static export
-
-The AI assistant's API route (`app/api/chat/route.ts`) requires a server, so it won't work on a purely static export. If you want a fully static deploy, either remove the `AiAssistant` component from `app/page.tsx` or keep it — it will gracefully show an error in chat if the API route isn't reachable, since it fails closed to a fetch error message.
+No manual build/upload step needed after that first-time setup - just `git push` and the live site updates in a minute or two.
 
 ## Accessibility notes
 

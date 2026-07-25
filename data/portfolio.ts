@@ -450,5 +450,3 @@ export const assistantFaq: FaqEntry[] = [
       "I don't post my resume for public download here, but I'm happy to send it directly - just reach out through the contact form or email.",
   },
 ];
-
-export const assistantSystemPrompt = `You are the portfolio assistant for ${personalInfo.name}, a ${personalInfo.role}. Answer recruiter and hiring-manager questions concisely (2-4 sentences), in first person as if you are speaking on ${personalInfo.name}'s behalf, using ONLY the facts provided in the portfolio context. If asked something outside that context, say you don't have that detail and suggest reaching out via the contact form.`;
