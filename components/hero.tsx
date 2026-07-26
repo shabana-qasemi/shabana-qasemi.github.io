@@ -28,15 +28,15 @@ export function Hero() {
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-32 -top-40 h-[38rem] w-[38rem] rounded-full bg-accent/40 blur-[130px]"
+        className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[110px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-32 top-1/4 h-[34rem] w-[34rem] rounded-full bg-accent2/35 blur-[130px]"
+        className="pointer-events-none absolute -right-24 top-10 h-[24rem] w-[24rem] rounded-full bg-accent2/25 blur-[110px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute bottom-[-10rem] left-1/2 h-[28rem] w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-accent/25 to-accent2/25 blur-[120px]"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[22rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-accent/15 to-accent2/15 blur-[100px]"
         aria-hidden
       />
       <div className="bg-noise pointer-events-none absolute inset-0" aria-hidden />
