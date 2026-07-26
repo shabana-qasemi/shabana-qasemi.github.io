@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[80vh] items-center overflow-hidden pt-24 pb-10"
+      className="relative flex min-h-screen items-center overflow-hidden pt-24 pb-10"
     >
       <div
         className="bg-grid mask-fade-b pointer-events-none absolute inset-0 opacity-40"
