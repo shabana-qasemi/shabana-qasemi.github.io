@@ -9,7 +9,7 @@ export const personalInfo = {
   initials: "SQ",
   role: "AI Engineering Intern & Computer Science Student",
   tagline:
-    "Hi, my name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
+    "My name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
   location: "Sacramento, CA",
   email: "qasemi.shabana@gmail.com",
   github: "https://github.com/shabana-qasemi",
