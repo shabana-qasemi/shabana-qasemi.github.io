@@ -11,7 +11,6 @@ export const personalInfo = {
   tagline:
     "My name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
   location: "Sacramento, CA",
-  email: "qasemi.shabana@gmail.com",
   github: "https://github.com/shabana-qasemi",
   linkedin: "https://www.linkedin.com/in/shabana-qasemi",
   resumeUrl: "/resume.pdf",
@@ -21,7 +20,6 @@ export const personalInfo = {
 export const socialLinks = [
   { label: "GitHub", href: personalInfo.github, icon: "Github" },
   { label: "LinkedIn", href: personalInfo.linkedin, icon: "Linkedin" },
-  { label: "Email", href: `mailto:${personalInfo.email}`, icon: "Mail" },
 ] as const;
 
 // Small credibility line shown under the name in the Hero section.
@@ -448,15 +446,14 @@ export const assistantFaq: FaqEntry[] = [
       "I'm starting a Programming Intern role at Design Hub, American River College in Fall 2026, alongside my current AI Engineering internship.",
   },
   {
-    keywords: ["contact", "reach", "email", "hire", "available", "hiring"],
+    keywords: ["contact", "reach", "hire", "available", "hiring"],
     question: "How can I reach you?",
-    answer:
-      "The fastest way to reach me is the contact form below, or email directly - links are in the footer.",
+    answer: "The best way to reach me is through LinkedIn or GitHub - links are in the footer.",
   },
   {
     keywords: ["resume", "cv"],
     question: "Can I get your resume?",
     answer:
-      "I don't post my resume for public download here, but I'm happy to send it directly - just reach out through the contact form or email.",
+      "I don't post my resume for public download here, but I'm happy to send it directly - just reach out through LinkedIn.",
   },
 ];
