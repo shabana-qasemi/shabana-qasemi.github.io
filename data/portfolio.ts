@@ -241,12 +241,10 @@ export const experience: ExperienceItem[] = [
     summary:
       "Debug production systems with AI-assisted tooling, design enterprise data pipelines, and build domain-specific AI personas, reporting directly to the CTO.",
     bullets: [
-      "Diagnosed and resolved 10+ critical production bugs using terminal-based AI diagnostics (Claude Code), tracing execution paths and root-causing issues across frontend and data layers of an enterprise analytics platform",
-      "Designed detailed ERDs and normalized relational schemas to Third Normal Form (3NF) for Merchant-of-Record, production, and catalog taxonomy data, loading enterprise datasets into PostgreSQL",
-      "Researched and built domain-specific AI personas to align conversational model behavior with brand tone and end-user needs",
-      "Built site maps and data-scraping/enrichment pipelines, integrating a catalog taxonomy classifier to structure raw product data",
-      "Authored structured prompt frameworks supporting PCI SAQ D compliance and updated developer runbooks following an AWS infrastructure migration",
-      "Partnered with engineering co-interns and senior engineers, reporting to the CTO, and managed PRs and sprint work through Linear",
+      "AI-Assisted Diagnostics & Debugging: Utilized terminal-based AI diagnostic tools (Claude Code) to trace execution paths, analyze variable mutations, and resolve 10+ production bugs across frontend and data layers (including subscription state filtering, visibility metrics, and card rendering)",
+      "Data Workflows & Database Loading: Engineered multi-stage data pipelines, generated production-ready datasets based on enterprise ERDs, structured clean CSV files, and executed data loads into PostgreSQL databases",
+      "Cross-Product Systems Collaboration: Participated in technical architecture and pair-programming sessions across core product systems (Radar, Nexus, and Atlas) to maintain data flow integrity and service reliability",
+      "System Mapping & AI Strategy: Engineered domain-specific AI user personas, mapped platform site navigation, and integrated catalog taxonomy classifiers to enrich scraped product data",
     ],
     tech: ["Claude Code", "PostgreSQL", "TypeScript", "SQL", "ERD Design", "Data Pipelines"],
   },
