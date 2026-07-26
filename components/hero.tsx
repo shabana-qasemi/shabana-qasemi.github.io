@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, GraduationCap, Github, Linkedin, MapPin } from "lucide-react";
+import { ArrowRight, GraduationCap, Github, Linkedin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { education, personalInfo, priorOrganizations, socialLinks } from "@/data/portfolio";
@@ -72,11 +72,6 @@ export function Hero() {
           <span className="inline-flex items-center gap-1">
             <GraduationCap className="h-3.5 w-3.5" />
             {education.school} - Computer Science
-          </span>
-          <span className="hidden sm:inline">|</span>
-          <span className="inline-flex items-center gap-1">
-            <MapPin className="h-3.5 w-3.5" />
-            {personalInfo.location}
           </span>
         </motion.div>
 
