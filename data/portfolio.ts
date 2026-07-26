@@ -9,7 +9,7 @@ export const personalInfo = {
   initials: "SQ",
   role: "AI Engineering Intern & Computer Science Student",
   tagline:
-    "I'm an AI Engineering Intern at AgentixPay, where I debug real production systems, build data pipelines, and design AI personas that shape how our systems talk to real users every day. I'm also working toward my A.S. in Computer Science at American River College, but most of what I actually know came from just building things - a fractal renderer, a physics simulation, an encryption tool from scratch in C++, because I wanted to understand how they worked, not just use them. Outside of that, I'm a Community Representative for the Ismaili Students Network and spent a semester teaching weekly classes for ITREB - a good reminder that not everything I care about lives in a terminal.",
+    "Hi, my name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
   location: "Sacramento, CA",
   email: "qasemi.shabana@gmail.com",
   github: "https://github.com/shabana-qasemi",
