@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Sparkles, UserRound } from "lucide-react";
+import { Sparkles, UserRound } from "lucide-react";
 
 import { SectionDivider } from "@/components/ui/section-divider";
 import { personalInfo } from "@/data/portfolio";
@@ -11,11 +11,6 @@ const facts = [
     icon: Sparkles,
     label: "Currently",
     value: personalInfo.availability,
-  },
-  {
-    icon: MapPin,
-    label: "Based in",
-    value: personalInfo.location,
   },
 ];
 

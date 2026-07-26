@@ -10,10 +10,8 @@ export const personalInfo = {
   role: "AI Engineering Intern & Computer Science Student",
   tagline:
     "My name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
-  location: "Sacramento, CA",
   github: "https://github.com/shabana-qasemi",
   linkedin: "https://www.linkedin.com/in/shabana-qasemi",
-  resumeUrl: "/resume.pdf",
   availability: "AI Engineering Intern - pursuing an A.S. in Computer Science, May 2027",
 } as const;
 
