@@ -1,7 +1,7 @@
 import { personalInfo, socialLinks } from "@/data/portfolio";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
-const iconMap = { Github, Linkedin, Mail } as const;
+const iconMap = { Github, Linkedin } as const;
 
 export function Footer() {
   return (

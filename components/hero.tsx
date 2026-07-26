@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, GraduationCap, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowRight, GraduationCap, Github, Linkedin, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { education, personalInfo, priorOrganizations, socialLinks } from "@/data/portfolio";
 
-const iconMap = { Github, Linkedin, Mail } as const;
+const iconMap = { Github, Linkedin } as const;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },

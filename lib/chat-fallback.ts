@@ -8,5 +8,5 @@ export function fallbackAnswer(userMessage: string): string {
 
   if (match) return match.answer;
 
-  return `I don't have a specific answer for that yet, but you can ask me about ${personalInfo.name}'s projects, tech stack, or experience - or reach out directly through the contact form below.`;
+  return `I don't have a specific answer for that yet, but you can ask me about ${personalInfo.name}'s projects, tech stack, or experience - or reach out directly through LinkedIn or GitHub, linked in the footer.`;
 }
