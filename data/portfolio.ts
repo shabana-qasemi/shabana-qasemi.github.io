@@ -248,7 +248,17 @@ export const experience: ExperienceItem[] = [
       "Cross-Product Systems Collaboration: Participated in technical architecture and pair-programming sessions across core product systems (Radar, Nexus, and Atlas) to maintain data flow integrity and service reliability",
       "System Mapping & AI Strategy: Engineered domain-specific AI user personas, mapped platform site navigation, and integrated catalog taxonomy classifiers to enrich scraped product data",
     ],
-    tech: ["Claude Code", "PostgreSQL", "TypeScript", "SQL", "ERD Design", "Data Pipelines"],
+    tech: [
+      "Data Engineering",
+      "Web Scraping",
+      "Prompt Engineering",
+      "Debugging",
+      "Git",
+      "TypeScript",
+      "Database Design",
+      "Programming",
+      "Critical Thinking",
+    ],
   },
   {
     id: "design-hub-arc",
