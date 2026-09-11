@@ -4,59 +4,59 @@
 
 @layer base {
   :root {
-    /* Warm off-white base (not flat white/blue-white) - pairs with a warm amber accent. */
-    --background: 36 28% 97%;
-    --foreground: 28 20% 10%;
+    /* Cool off-white base with a slight blue bias, so it reads chosen alongside the indigo accent. */
+    --background: 222 24% 97%;
+    --foreground: 228 22% 12%;
 
-    --card: 36 30% 99%;
-    --card-foreground: 28 20% 10%;
+    --card: 220 30% 99%;
+    --card-foreground: 228 22% 12%;
 
-    --primary: 28 18% 14%;
-    --primary-foreground: 36 25% 98%;
+    --primary: 228 20% 14%;
+    --primary-foreground: 220 25% 98%;
 
-    --secondary: 34 22% 92%;
-    --secondary-foreground: 28 18% 14%;
+    --secondary: 220 20% 93%;
+    --secondary-foreground: 228 20% 14%;
 
-    --muted: 34 22% 92%;
-    --muted-foreground: 28 10% 40%;
+    --muted: 220 20% 93%;
+    --muted-foreground: 222 10% 42%;
 
-    /* Terminal-amber accent, darkened for AA contrast on a light ground. */
-    --accent: 36 88% 38%;
-    --accent-foreground: 36 25% 98%;
-    --accent-secondary: 16 78% 42%; /* deeper ember - analogous, not a contrasting hue */
+    /* Indigo/blue accent, darkened for AA contrast on a light ground. */
+    --accent: 228 78% 48%;
+    --accent-foreground: 220 25% 98%;
+    --accent-secondary: 213 75% 45%; /* a touch more cyan-leaning - analogous, not a contrasting hue */
 
-    --border: 32 20% 87%;
-    --input: 32 20% 87%;
-    --ring: 36 88% 38%;
+    --border: 220 18% 88%;
+    --input: 220 18% 88%;
+    --ring: 228 78% 48%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Warm near-black (not blue-black) - a terminal/CRT ground, not generic "AI navy". */
-    --background: 30 10% 6%;
-    --foreground: 40 22% 94%;
+    /* Deep blue-slate, not flat black - a considered cool ground for the indigo accent. */
+    --background: 230 18% 7%;
+    --foreground: 220 25% 95%;
 
-    --card: 28 12% 9%;
-    --card-foreground: 40 22% 94%;
+    --card: 228 16% 10%;
+    --card-foreground: 220 25% 95%;
 
-    --primary: 40 22% 94%;
-    --primary-foreground: 28 18% 10%;
+    --primary: 220 25% 95%;
+    --primary-foreground: 228 20% 9%;
 
-    --secondary: 28 12% 14%;
-    --secondary-foreground: 40 22% 94%;
+    --secondary: 228 14% 14%;
+    --secondary-foreground: 220 25% 95%;
 
-    --muted: 28 12% 14%;
-    --muted-foreground: 32 12% 65%;
+    --muted: 228 14% 14%;
+    --muted-foreground: 220 10% 65%;
 
-    /* Terminal amber, phosphor-bright on the dark ground. */
-    --accent: 38 92% 55%;
-    --accent-foreground: 28 30% 8%;
-    --accent-secondary: 16 82% 52%; /* ember - keeps the hero/card gradients monochromatic-warm */
+    /* Electric indigo/blue, bright on the dark ground. */
+    --accent: 228 85% 62%;
+    --accent-foreground: 220 30% 98%;
+    --accent-secondary: 213 80% 58%; /* a touch more cyan-leaning - keeps gradients monochromatic-cool, not purple */
 
-    --border: 28 14% 18%;
-    --input: 28 14% 18%;
-    --ring: 38 92% 55%;
+    --border: 228 16% 19%;
+    --input: 228 16% 19%;
+    --ring: 228 85% 62%;
   }
 }
 
