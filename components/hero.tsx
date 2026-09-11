@@ -57,15 +57,15 @@ export function Hero() {
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent/30 blur-[110px]"
+        className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent/10 blur-[110px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-24 top-10 h-[24rem] w-[24rem] rounded-full bg-accent2/25 blur-[110px]"
+        className="pointer-events-none absolute -right-24 top-10 h-[24rem] w-[24rem] rounded-full bg-accent2/[0.08] blur-[110px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[22rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-accent/15 to-accent2/15 blur-[100px]"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[22rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-accent/5 to-accent2/5 blur-[100px]"
         aria-hidden
       />
       <div className="bg-noise pointer-events-none absolute inset-0" aria-hidden />

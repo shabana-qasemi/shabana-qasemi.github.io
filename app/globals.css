@@ -33,30 +33,30 @@
   }
 
   .dark {
-    /* Deep blue-slate, not flat black - a considered cool ground for the indigo accent. */
-    --background: 230 18% 7%;
-    --foreground: 220 25% 95%;
+    /* Warm charcoal, not blue-slate - a neutral ground the indigo accent can pop against. */
+    --background: 25 8% 8%;
+    --foreground: 30 15% 95%;
 
-    --card: 228 16% 10%;
-    --card-foreground: 220 25% 95%;
+    --card: 26 9% 11%;
+    --card-foreground: 30 15% 95%;
 
-    --primary: 220 25% 95%;
-    --primary-foreground: 228 20% 9%;
+    --primary: 30 15% 95%;
+    --primary-foreground: 25 10% 9%;
 
-    --secondary: 228 14% 14%;
-    --secondary-foreground: 220 25% 95%;
+    --secondary: 26 8% 15%;
+    --secondary-foreground: 30 15% 95%;
 
-    --muted: 228 14% 14%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 26 8% 15%;
+    --muted-foreground: 30 6% 65%;
 
-    /* Electric indigo/blue, bright on the dark ground. */
-    --accent: 228 85% 62%;
+    /* Electric indigo/blue - the one cool note in an otherwise warm-neutral scheme. */
+    --accent: 228 85% 64%;
     --accent-foreground: 220 30% 98%;
-    --accent-secondary: 213 80% 58%; /* a touch more cyan-leaning - keeps gradients monochromatic-cool, not purple */
+    --accent-secondary: 213 80% 60%; /* a touch more cyan-leaning - keeps gradients monochromatic-cool, not purple */
 
-    --border: 228 16% 19%;
-    --input: 228 16% 19%;
-    --ring: 228 85% 62%;
+    --border: 26 8% 20%;
+    --input: 26 8% 20%;
+    --ring: 228 85% 64%;
   }
 }
 
