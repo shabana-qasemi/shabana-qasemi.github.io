@@ -91,22 +91,12 @@ export function Hero() {
           {personalInfo.name}
         </motion.h1>
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={2}
-          className="mt-6 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg"
-        >
-          {personalInfo.impactStatement}
-        </motion.p>
-
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          custom={3}
-          className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-muted-foreground"
+          custom={2}
+          className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-muted-foreground"
         >
           <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card/70 px-3 py-1 font-mono text-xs backdrop-blur-md">
             <span className="relative flex h-1.5 w-1.5">
@@ -125,7 +115,7 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          custom={4}
+          custom={3}
           className="mask-fade-x mt-5 w-full max-w-xs overflow-hidden sm:max-w-md"
         >
           <motion.div
@@ -146,7 +136,7 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          custom={5}
+          custom={4}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <Button asChild size="lg" variant="accent">
