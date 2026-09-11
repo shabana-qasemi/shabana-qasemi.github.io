@@ -28,22 +28,14 @@ export const socialLinks = [
 ] as const;
 
 // Small credibility line shown under the name in the Hero section.
-export const priorOrganizations = [
-  "AgentixPay",
-  "Design Hub",
-  "American River College",
-  "Walmart",
-  "HI-Q-Tronix GmbH",
-];
+export const priorOrganizations = ["AgentixPay", "Design Hub", "American River College"];
 
 export const navLinks = [
   { label: "About Me", href: "#about" },
   { label: "Education", href: "#education" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Leadership", href: "#leadership" },
   { label: "Skills", href: "#skills" },
-  { label: "Recommendations", href: "#recommendations" },
   { label: "Connect", href: "#contact" },
 ] as const;
 
@@ -359,99 +351,14 @@ export const experience: ExperienceItem[] = [
     ],
     tech: [],
   },
-  {
-    id: "itreb",
-    role: "Teacher",
-    company: "Ismaili Tariqah and Religious Education Board (ITREB), Western United States",
-    location: "Sacramento, CA",
-    startDate: "Aug 2025",
-    endDate: "Jan 2026",
-    summary:
-      "Taught weekly religious education classes to elementary students, connecting core principles to everyday decision-making.",
-    bullets: [
-      "Taught weekly classes to 15-25 elementary students, connecting core principles to everyday decision-making",
-      "Developed structured lesson plans, improving student engagement and comprehension",
-      "Strengthened communication and leadership skills through classroom instruction and interactive group activities",
-    ],
-    tech: [],
-  },
-  {
-    id: "walmart",
-    role: "Financial Associate",
-    company: "Walmart",
-    location: "Roseville, CA",
-    startDate: "Jun 2024",
-    endDate: "May 2025",
-    summary:
-      "Handled high-volume financial transactions and trained new hires in a fast-paced retail environment.",
-    bullets: [
-      "Trained 5+ new employees on POS systems and store workflows, improving onboarding efficiency by 50%",
-      "Processed high-volume financial transactions with 90% accuracy, handling sensitive customer payment information",
-      "Maintained customer service standards in a fast-paced retail environment, improving checkout flow by 30%",
-    ],
-    tech: [],
-  },
-  {
-    id: "hi-q-tronix",
-    role: "Data Entry Clerk",
-    company: "HI-Q-Tronix GmbH",
-    location: "Oldenburg, DE",
-    startDate: "May 2023",
-    endDate: "Oct 2023",
-    summary:
-      "Maintained structured company data and corrected inconsistencies across records.",
-    bullets: [
-      "Entered and maintained structured data in company databases and spreadsheets with consistent accuracy",
-      "Verified data integrity and corrected inconsistencies across records",
-    ],
-    tech: [],
-  },
 ];
 
-// ---------------------------------------------------------------------------
-// Leadership & Involvement
-// ---------------------------------------------------------------------------
-
-export interface LeadershipItem {
-  id: string;
-  role: string;
-  organization: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  bullets: string[];
-}
-
-export const leadership: LeadershipItem[] = [
-  {
-    id: "isn",
-    role: "Community Representative",
-    organization: "Ismaili Students Network (ISN)",
-    location: "Sacramento, CA",
-    startDate: "May 2025",
-    endDate: "Present",
-    bullets: [
-      "Represented 40+ Sacramento students in regional initiatives, supporting student engagement efforts",
-      "Coordinated 5+ student events and communications, increasing student engagement by 25% year over year",
-      "Served as liaison between students and National Leadership, coordinating 6+ initiatives across the United States",
-    ],
-  },
-];
-
-// ---------------------------------------------------------------------------
-// Recommendations
-// Empty until real quotes are added - the section renders a placeholder
-// state until this array has entries. Add objects here to populate it.
-// ---------------------------------------------------------------------------
-
-export interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  role: string;
-}
-
-export const testimonials: Testimonial[] = [];
+// Non-technical roles (Walmart, HI-Q-Tronix data entry, ITREB teaching) and the
+// Leadership/Recommendations sections were intentionally cut from the main
+// narrative - a portfolio proves technical craft through evidence, a resume
+// lists credentials. Full work history still lives on LinkedIn (linked in the
+// Hero/Contact); add a real resume PDF link here if you want a downloadable
+// version too.
 
 // ---------------------------------------------------------------------------
 // AI Portfolio Assistant - fallback knowledge base
@@ -475,37 +382,31 @@ export const assistantFaq: FaqEntry[] = [
     keywords: ["project", "built", "build", "portfolio", "made"],
     question: "What have you built?",
     answer:
-      "A few highlights: a multithreaded Mandelbrot Set Visualizer (75% faster rendering), a real-time Particle Simulation with collision physics, an RSA encryption system built from scratch, and a Chaos Game fractal generator. All in C++ with SFML - check the Projects section for details.",
+      "A few highlights: Prep-Agent, a LangGraph multi-agent orchestrator that plans real meals around a real budget; production bug fixes and test coverage inside AgentixPay's live Radar platform; this portfolio site itself; and a multithreaded Mandelbrot Set Visualizer in C++. Check the Projects section for the full case studies.",
   },
   {
     keywords: ["favorite", "proudest", "best project", "coolest"],
     question: "What's your favorite project?",
     answer:
-      "Probably the Mandelbrot Set Visualizer - I optimized it with multithreading and got a 75% speed improvement, which taught me a lot about how real concurrency bugs actually show up.",
+      "Probably Prep-Agent - designing the LangGraph routing so agents only run when a request actually needs them taught me a lot about when NOT to reach for one big pipeline.",
   },
   {
     keywords: ["stack", "tech", "technologies", "languages", "tools", "typescript", "sql", "database"],
     question: "What's your tech stack?",
     answer:
-      "Core languages are C++, Python, and C, plus TypeScript and SQL through my internship work. Through my AI Engineering internship I work with Claude Code, PostgreSQL, and ERD/database design. For graphics and simulation work I use SFML and LodePNG. Day to day tools: Git, GitHub, Xcode, VS Code, and Linux.",
+      "Frontend: React, Next.js, TypeScript, Tailwind CSS, Framer Motion. Backend & AI: Python, FastAPI, LangGraph, the Claude API, PostgreSQL. I also have a C++ background (SFML, multithreading, real-time rendering) from earlier systems projects. Day to day tools: Git, GitHub, Claude Code, VS Code, Linux.",
   },
   {
     keywords: ["experience", "internship", "agentixpay", "work", "job", "ai engineering", "current role"],
     question: "What's your work experience?",
     answer:
-      "I'm currently an AI Engineering Intern at AgentixPay - debugging production codebases with Claude Code, designing PostgreSQL data pipelines and ERDs, and building AI personas. I've also worked as a Student Assistant at American River College, a Financial Associate at Walmart, and a Data Entry Clerk at HI-Q-Tronix GmbH in Germany. Full details are in the Experience timeline.",
+      "I'm currently an AI Engineering Intern at AgentixPay - debugging production codebases with Claude Code, designing PostgreSQL data pipelines and ERDs, and building AI personas. I've also worked as a Student Assistant at American River College. Full details are in the Experience timeline.",
   },
   {
     keywords: ["education", "school", "college", "degree", "graduate", "studying"],
     question: "What are you studying?",
     answer:
       "I'm pursuing an Associate Degree in Computer Science at American River College, graduating May 2027, with coursework in Data Structures and Algorithms, Object-Oriented Programming, and Discrete Mathematics.",
-  },
-  {
-    keywords: ["leadership", "isn", "itreb", "volunteer", "community", "involvement"],
-    question: "Tell me about your leadership experience.",
-    answer:
-      "I'm a Community Representative for the Ismaili Students Network, representing 40+ Sacramento students in regional initiatives, and I taught weekly classes for the Ismaili Tariqah and Religious Education Board. Details are in the Leadership section.",
   },
   {
     keywords: ["why ai", "why computer science", "passion", "interested in"],

@@ -5,10 +5,8 @@ import { Education } from "@/components/education";
 import { Experience } from "@/components/experience";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
-import { Leadership } from "@/components/leadership";
 import { Navbar } from "@/components/navbar";
 import { Projects } from "@/components/projects";
-import { Recommendations } from "@/components/recommendations";
 import { Skills } from "@/components/skills";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -25,12 +23,10 @@ export default function Home() {
       <main id="main">
         <Hero />
         <About />
-        <Education />
-        <Experience />
         <Projects />
-        <Leadership />
+        <Experience />
+        <Education />
         <Skills />
-        <Recommendations />
         <Contact />
       </main>
       <Footer />

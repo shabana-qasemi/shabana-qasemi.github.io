@@ -30,9 +30,7 @@ const sectionTargets: { id: string; keywords: string[] }[] = [
   { id: "education", keywords: ["education", "school", "college", "degree"] },
   { id: "experience", keywords: ["experience", "work history", "internship", "job"] },
   { id: "projects", keywords: ["project"] },
-  { id: "leadership", keywords: ["leadership", "involvement", "volunteer"] },
   { id: "skills", keywords: ["skill", "tech stack", "toolkit"] },
-  { id: "recommendations", keywords: ["recommendation", "testimonial"] },
   { id: "contact", keywords: ["contact", "connect", "reach out"] },
 ];
 
