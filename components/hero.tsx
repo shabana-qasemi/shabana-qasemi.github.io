@@ -1,12 +1,41 @@
 "use client";
 
+import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, GraduationCap, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Check, Copy, GraduationCap, Github, Linkedin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { education, personalInfo, priorOrganizations, socialLinks } from "@/data/portfolio";
 
 const iconMap = { Github, Linkedin } as const;
+
+function CopyEmailButton({ email }: { email: string }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // Clipboard API unavailable - fail silently, the email is still visible via the link.
+    }
+  };
+
+  return (
+    <Button size="lg" variant="outline" onClick={handleCopy} aria-live="polite">
+      {copied ? (
+        <>
+          <Check /> Copied!
+        </>
+      ) : (
+        <>
+          <Copy /> Copy Email
+        </>
+      )}
+    </Button>
+  );
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -62,13 +91,30 @@ export function Hero() {
           {personalInfo.name}
         </motion.h1>
 
-        <motion.div
+        <motion.p
           variants={fadeUp}
           initial="hidden"
           animate="show"
           custom={2}
+          className="mt-6 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg"
+        >
+          {personalInfo.impactStatement}
+        </motion.p>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={3}
           className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-muted-foreground"
         >
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card/70 px-3 py-1 font-mono text-xs backdrop-blur-md">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            </span>
+            {personalInfo.status}
+          </span>
           <span className="inline-flex items-center gap-1">
             <GraduationCap className="h-3.5 w-3.5" />
             {education.school} - Computer Science
@@ -79,7 +125,7 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          custom={3}
+          custom={4}
           className="mask-fade-x mt-5 w-full max-w-xs overflow-hidden sm:max-w-md"
         >
           <motion.div
@@ -100,23 +146,20 @@ export function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          custom={4}
+          custom={5}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <Button asChild size="lg" variant="accent">
             <a href="#projects">
-              See What I&apos;ve Built <ArrowRight />
+              View Work <ArrowRight />
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <a href="#contact">Let&apos;s Connect</a>
-          </Button>
 
-          <div className="ml-1 flex items-center gap-1">
+          <div className="flex items-center gap-1">
             {socialLinks.map(({ label, href, icon }) => {
               const Icon = iconMap[icon as keyof typeof iconMap];
               return (
-                <Button key={label} asChild size="icon" variant="ghost" aria-label={label}>
+                <Button key={label} asChild size="icon" variant="outline" aria-label={label}>
                   <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
                     <Icon />
                   </a>
@@ -124,6 +167,8 @@ export function Hero() {
               );
             })}
           </div>
+
+          {personalInfo.email && <CopyEmailButton email={personalInfo.email} />}
         </motion.div>
       </div>
     </section>

@@ -7,11 +7,18 @@ export const personalInfo = {
   name: "Shabana Qasemi",
   firstName: "Shabana",
   initials: "SQ",
-  role: "AI Engineering Intern & Computer Science Student",
+  role: "AI Engineering Intern & Frontend/AI Systems Builder",
   tagline:
     "My name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
+  // 2-sentence hero-length version of the tagline above - keep these in sync when the bio changes.
+  impactStatement:
+    "I build systems people can trust with their data - from a multi-agent AI orchestrator that plans real meals around a real budget, to production fixes shipped inside a live fintech platform. Currently an AI Engineering Intern on AgentixPay's Radar team, studying AI/ML and Data Engineering at American River College.",
+  status: "Shipping production fixes & AI agents on AgentixPay's Radar team",
   github: "https://github.com/shabana-qasemi",
   linkedin: "https://www.linkedin.com/in/shabana-qasemi",
+  // Set this to enable the Hero's "Copy Email" button - left unset because email was
+  // deliberately removed from Contact previously. See handoff notes before setting it.
+  email: undefined as string | undefined,
   availability: "AI Engineering Intern - pursuing an A.S. in Computer Science, May 2027",
 } as const;
 
@@ -48,7 +55,7 @@ export const education = {
   school: "American River College",
   location: "Sacramento, CA",
   degree: "Associate Degree in Computer Science",
-  gpa: "3.41 / 4.00",
+  gpa: "3.28 / 4.00",
   graduation: "May 2027",
   coursework: [
     "Data Structures and Algorithms",
@@ -74,9 +81,78 @@ export interface Project {
   };
   architecture: string[];
   featured: boolean;
+  /** True for work built inside a proprietary codebase - hides demo/GitHub links, shows a "Confidential" badge instead. */
+  confidential?: boolean;
 }
 
 export const projects: Project[] = [
+  {
+    id: "prep-agent",
+    title: "Prep-Agent",
+    tagline: "Multi-agent AI orchestrator that plans a week of meals around real macros and a real budget.",
+    description:
+      "A dynamic multi-agent system that routes requests across specialized planning, budgeting, and grocery agents behind a conditional graph, grounded in live recipe and pricing data rather than static text generation.",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "LangGraph", "Claude API"],
+    metrics: [
+      "Designed a LangGraph orchestrator that conditionally routes each request across five specialized agents (Macro, MealPlan, Budget, Grocery) instead of one monolithic prompt",
+      "Integrated the Spoonacular API for real recipes and live pricing, so plans reflect actual groceries and actual cost",
+      "Split the system into a FastAPI/Python backend and a Next.js/TypeScript frontend to keep orchestration logic independent of the UI",
+    ],
+    links: { github: "https://github.com/shabana-qasemi/Prep-Agent" },
+    architecture: [
+      "An Orchestrator agent reads the user's request and decides which downstream agents need to run, and in what order",
+      "The Macro agent computes calorie/macro targets; the MealPlan agent proposes meals that satisfy them",
+      "The Budget and Grocery agents turn the plan into a priced grocery list using live Spoonacular pricing",
+      "LangGraph's conditional routing means agents only run when the request actually needs them, instead of executing a fixed linear pipeline every time",
+    ],
+    featured: true,
+  },
+  {
+    id: "radar-production-engineering",
+    title: "Production Engineering @ AgentixPay",
+    tagline: "Diagnosing and shipping fixes inside a live fintech scraping platform, with test coverage to match.",
+    description:
+      "As an AI Engineering Intern on the Radar team, independently traced and fixed production bugs in a TypeScript/C++ web-scraping platform, backing each fix with new automated tests rather than just patching the symptom.",
+    techStack: ["TypeScript", "C++", "Vitest", "PostgreSQL", "Claude Code"],
+    metrics: [
+      "Diagnosed a silent data-loss bug in a database wrapper missing columns (including Stripe billing and tax-nexus fields), shipped the fix across two PRs with 29 new unit tests",
+      "Fixed an over-permissive URL-matching pattern in the scraper that was incorrectly capturing non-product pages, merged to production",
+      "Led competitive research on Radar vs. SEMrush/Ahrefs at the CTO's request, surfacing feature gaps and two original UX proposals",
+    ],
+    links: {},
+    architecture: [
+      "Traced the data-loss bug from a downstream symptom (missing fields) back to the database wrapper layer using AI-assisted diagnostics",
+      "Reproduced the gap against the production schema, confirming which Stripe billing and tax-nexus columns the wrapper was silently dropping",
+      "Shipped the fix across two PRs and backed it with 29 unit tests to guard against regression",
+      "Separately audited the scraper's URL-matching logic and tightened a pattern that was over-matching non-product pages",
+    ],
+    featured: true,
+    confidential: true,
+  },
+  {
+    id: "portfolio-site",
+    title: "This Portfolio",
+    tagline: "The site you're looking at right now - redesigned for a technical, recruiter-facing audience.",
+    description:
+      "A ground-up redesign of this portfolio focused on clear information architecture, a token-based dark-mode design system, and motion that supports the content instead of distracting from it.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI"],
+    metrics: [
+      "Built a token-based design system (CSS variables for color, radius, and theme) so light and dark mode stay consistent across every component",
+      "Statically exported via the Next.js App Router and deployed through GitHub Actions to GitHub Pages - no server required",
+      "Used Framer Motion for scroll-triggered reveals and hover micro-interactions without hurting load performance",
+    ],
+    links: {
+      demo: "https://shabana-qasemi.github.io",
+      github: "https://github.com/shabana-qasemi/shabana-qasemi.github.io",
+    },
+    architecture: [
+      "All content lives in one typed data file (data/portfolio.ts), so copy changes never touch component code",
+      "Design tokens are defined as CSS variables in globals.css and consumed through the Tailwind theme config, so both themes share one source of truth",
+      "Section components compose independently in app/page.tsx, each animating in on scroll via Framer Motion's whileInView",
+      "next.config.mjs runs a static export that the GitHub Actions workflow deploys automatically on every push to main",
+    ],
+    featured: true,
+  },
   {
     id: "mandelbrot-set-visualizer",
     title: "Mandelbrot Set Visualizer",
@@ -117,7 +193,7 @@ export const projects: Project[] = [
       "Collision checks resolve particle-particle and boundary interactions",
       "SFML renders the updated particle state each frame in real time",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "rsa-encryption",
@@ -138,7 +214,7 @@ export const projects: Project[] = [
       "Encrypted output is verified by decrypting and comparing against the original input",
       "Brute-force tests on small key sizes confirm correctness of the core math",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "chaos-fractal-generator",
@@ -175,40 +251,40 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    category: "Core Languages",
+    category: "Frontend & UI Systems",
     icon: "Code2",
-    skills: ["C++", "Python", "C"],
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    category: "AI Engineering & Data Systems",
+    category: "Backend & AI Infrastructure",
     icon: "BrainCircuit",
     skills: [
+      "Python",
+      "FastAPI",
+      "LangGraph",
+      "Claude API",
+      "PostgreSQL",
+      "Prompt Engineering",
       "Data Engineering",
       "Web Scraping",
-      "Prompt Engineering",
-      "Debugging",
-      "Git",
-      "TypeScript",
-      "Database Design",
-      "Programming",
-      "Critical Thinking",
     ],
   },
   {
-    category: "Graphics & Simulation",
+    category: "Systems & Graphics (C++)",
     icon: "Boxes",
     skills: [
+      "C++",
+      "C",
       "SFML",
-      "LodePNG",
+      "Multithreading",
       "Real-time Rendering",
-      "Particle Physics",
       "Fractal Algorithms",
     ],
   },
   {
-    category: "Developer Tools & Workflow",
+    category: "Developer Tooling & Workflow",
     icon: "Terminal",
-    skills: ["Git", "GitHub", "Xcode", "Visual Studio Code", "Linux", "Linear"],
+    skills: ["Git", "GitHub", "Claude Code", "Vitest", "VS Code", "Linux"],
   },
 ];
 

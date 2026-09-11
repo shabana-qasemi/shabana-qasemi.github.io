@@ -22,7 +22,7 @@ export function Skills() {
       <div className="container">
         <SectionHeading
           icon={Wrench}
-          eyebrow="Technical Skills"
+          eyebrow="Technical Capabilities"
           className="mb-10"
         />
 
