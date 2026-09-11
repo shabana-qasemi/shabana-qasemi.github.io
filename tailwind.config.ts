@@ -54,7 +54,10 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        // Display headings use the mono face too (not a serif) - one consistent
+        // "systems/terminal" typographic identity instead of serif-headline-plus-
+        // tech-tags feeling like two unrelated design languages.
+        serif: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },
       keyframes: {
         "accordion-down": {
