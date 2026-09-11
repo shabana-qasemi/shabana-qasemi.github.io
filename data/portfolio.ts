@@ -81,21 +81,21 @@ export const projects: Project[] = [
   {
     id: "prep-agent",
     title: "Prep-Agent",
-    tagline: "Multi-agent AI orchestrator that plans a week of meals around real macros and a real budget.",
+    tagline: "A multi-agent meal-prep orchestrator that decides its own execution plan at runtime - built with Claude Code.",
     description:
-      "A dynamic multi-agent system that routes requests across specialized planning, budgeting, and grocery agents behind a conditional graph, grounded in live recipe and pricing data rather than static text generation.",
-    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "LangGraph", "Claude API"],
+      "An Orchestrator Agent classifies each request and decides, per message, exactly which specialized agents need to run - so a general question or a no-budget request skips agents it doesn't need, instead of always running a fixed pipeline. Built end-to-end on free-tier APIs after weighing the cost and security tradeoffs of paid ones.",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "LangGraph", "Groq", "Gemini", "Claude Code"],
     metrics: [
-      "Designed a LangGraph orchestrator that conditionally routes each request across five specialized agents (Macro, MealPlan, Budget, Grocery) instead of one monolithic prompt",
-      "Integrated the Spoonacular API for real recipes and live pricing, so plans reflect actual groceries and actual cost",
-      "Split the system into a FastAPI/Python backend and a Next.js/TypeScript frontend to keep orchestration logic independent of the UI",
+      "Chose Groq + Gemini + TheMealDB over the original paid Anthropic + Spoonacular setup specifically to avoid paid-API exposure - a free tier can't hand you a surprise bill if a key ever leaks or gets abused",
+      "57 backend tests (fully mocked, no live API calls or keys needed) cover agent routing, security behavior, and failure handling",
+      "Ran a full secret/PII sweep of the current tree and entire git history before making the repo public",
     ],
     links: { github: "https://github.com/shabana-qasemi/Prep-Agent" },
     architecture: [
-      "An Orchestrator agent reads the user's request and decides which downstream agents need to run, and in what order",
-      "The Macro agent computes calorie/macro targets; the MealPlan agent proposes meals that satisfy them",
-      "The Budget and Grocery agents turn the plan into a priced grocery list using live Spoonacular pricing",
-      "LangGraph's conditional routing means agents only run when the request actually needs them, instead of executing a fixed linear pipeline every time",
+      "An Orchestrator Agent classifies each incoming message and builds a plan of exactly which downstream agents apply (Macro, MealPlan, Budget, Grocery), skipping anything the request doesn't need",
+      "A LangGraph state machine re-evaluates \"what's left to do?\" after every step, instead of hardcoding a fixed agent order",
+      "Recipe lookups and price/macro estimates for a 7-day plan run concurrently rather than sequentially, keeping response time and Groq's free-tier rate limit both in check",
+      "Every LLM call has typed retry logic tuned to the two failure modes actually hit during live testing: malformed structured output and rate limiting",
     ],
     featured: true,
   },
@@ -124,10 +124,10 @@ export const projects: Project[] = [
   {
     id: "portfolio-site",
     title: "This Portfolio",
-    tagline: "The site you're looking at right now - redesigned for a technical, recruiter-facing audience.",
+    tagline: "The site you're looking at right now - built with Claude Code, directing every design and content decision.",
     description:
       "A ground-up redesign of this portfolio focused on clear information architecture, a token-based dark-mode design system, and motion that supports the content instead of distracting from it.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI"],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI", "Claude Code"],
     metrics: [
       "Built a token-based design system (CSS variables for color, radius, and theme) so light and dark mode stay consistent across every component",
       "Statically exported via the Next.js App Router and deployed through GitHub Actions to GitHub Pages - no server required",
