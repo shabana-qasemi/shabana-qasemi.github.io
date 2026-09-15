@@ -39,9 +39,14 @@ export function Education() {
                 </span>
               </p>
             </div>
-            <span className="font-mono text-sm text-muted-foreground">
-              {education.graduation}
-            </span>
+            <div className="flex flex-col items-end gap-0.5">
+              <span className="font-mono text-sm text-muted-foreground">
+                {education.graduation}
+              </span>
+              <span className="font-mono text-xs text-muted-foreground/70">
+                GPA {education.gpa}
+              </span>
+            </div>
           </div>
 
           <div className="mt-6">

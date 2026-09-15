@@ -12,14 +12,14 @@ export const personalInfo = {
     "My name is Shabana, and I am a Computer Science student concentrating in AI/ML and Data Engineering. I am passionate about building software that solves real problems - technology that's reliable enough to trust with people's data, and accessible enough to actually reach the people it's meant to help. I am driven by a desire to build systems people can depend on, grounded in hands-on technical experience and a strong attention to detail.",
   // 2-sentence hero-length version of the tagline above - keep these in sync when the bio changes.
   impactStatement:
-    "I build systems people can trust with their data - from a multi-agent AI orchestrator that plans real meals around a real budget, to production fixes shipped inside a live fintech platform. Currently an AI Engineering Intern on AgentixPay's Radar team, studying AI/ML and Data Engineering at American River College.",
-  status: "Shipping production fixes & AI agents on AgentixPay's Radar team",
+    "I build systems people can trust with their data - from a multi-agent AI orchestrator that plans real meals around a real budget, to production fixes and AI tooling shipped inside a live fintech platform. Currently a Programming Intern at ARC's Design Hub, studying AI/ML and Data Engineering at American River College.",
+  status: "Building a Chrome extension for ARC's MESA program as a Programming Intern",
   github: "https://github.com/shabana-qasemi",
   linkedin: "https://www.linkedin.com/in/shabana-qasemi",
   // Set this to enable the Hero's "Copy Email" button - left unset because email was
   // deliberately removed from Contact previously. See handoff notes before setting it.
   email: undefined as string | undefined,
-  availability: "AI Engineering Intern - pursuing an A.S. in Computer Science, May 2027",
+  availability: "Programming Intern @ ARC Design Hub - pursuing an A.S. in Computer Science, May 2027",
 } as const;
 
 export const socialLinks = [
@@ -47,7 +47,8 @@ export const education = {
   school: "American River College",
   location: "Sacramento, CA",
   degree: "Associate Degree in Computer Science",
-  gpa: "3.28 / 4.00",
+  // Cumulative across the Los Rios district (ARC + Folsom Lake + Sac City), matching the figure on her resume.
+  gpa: "3.35 / 4.00",
   graduation: "May 2027",
   coursework: [
     "Data Structures and Algorithms",
@@ -75,6 +76,8 @@ export interface Project {
   featured: boolean;
   /** True for work built inside a proprietary codebase - hides demo/GitHub links, shows a "Confidential" badge instead. */
   confidential?: boolean;
+  /** Path under /public to a real screenshot (public/projects/*). Falls back to a decorative icon frame when unset. */
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -84,39 +87,40 @@ export const projects: Project[] = [
     tagline: "A multi-agent meal-prep orchestrator that decides its own execution plan at runtime - built with Claude Code.",
     description:
       "An Orchestrator Agent classifies each request and decides, per message, exactly which specialized agents need to run - so a general question or a no-budget request skips agents it doesn't need, instead of always running a fixed pipeline. Built end-to-end on free-tier APIs after weighing the cost and security tradeoffs of paid ones.",
-    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "LangGraph", "Groq", "Gemini", "Claude Code"],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "LangGraph", "Pydantic", "Groq", "Gemini", "Claude Code"],
     metrics: [
-      "Chose Groq + Gemini + TheMealDB over the original paid Anthropic + Spoonacular setup specifically to avoid paid-API exposure - a free tier can't hand you a surprise bill if a key ever leaks or gets abused",
-      "57 backend tests (fully mocked, no live API calls or keys needed) cover agent routing, security behavior, and failure handling",
+      "Migrated the full LLM and data layer to free-tier providers (Groq + Gemini + TheMealDB), eliminating 100% of projected API costs while keeping feature parity - validated by 57+ automated pytest tests with zero live-API dependency",
+      "Diagnosed a structured-output reliability issue through live load testing, then redesigned around JSON-mode with failure-specific retry/backoff logic",
       "Ran a full secret/PII sweep of the current tree and entire git history before making the repo public",
     ],
     links: { github: "https://github.com/shabana-qasemi/Prep-Agent" },
+    image: "/projects/prep-agent.jpg",
     architecture: [
-      "An Orchestrator Agent classifies each incoming message and builds a plan of exactly which downstream agents apply (Macro, MealPlan, Budget, Grocery), skipping anything the request doesn't need",
-      "A LangGraph state machine re-evaluates \"what's left to do?\" after every step, instead of hardcoding a fixed agent order",
-      "Recipe lookups and price/macro estimates for a 7-day plan run concurrently rather than sequentially, keeping response time and Groq's free-tier rate limit both in check",
-      "Every LLM call has typed retry logic tuned to the two failure modes actually hit during live testing: malformed structured output and rate limiting",
+      "An Orchestrator Agent classifies each incoming message with a single LLM call and builds a plan of exactly which downstream agents apply (Macro, MealPlan, Budget, Grocery), skipping anything the request doesn't need",
+      "Every agent enforces strict schema validation via Pydantic JSON-mode structured outputs instead of parsing free-text LLM responses",
+      "Real-time SSE streaming renders each pipeline stage as it completes, instead of waiting on the full multi-agent run",
+      "The FastAPI backend is hardened with defense-in-depth: dual-layer request-size validation, prompt-injection-resistant system prompts, environment-driven CORS, and a sanitizing global exception handler - with multi-tenant safety verified by construction (zero shared mutable state)",
     ],
     featured: true,
   },
   {
     id: "radar-production-engineering",
     title: "Production Engineering @ AgentixPay",
-    tagline: "Diagnosing and shipping fixes inside a live fintech scraping platform, with test coverage to match.",
+    tagline: "Diagnosing production bugs and building the scoring specs, personas, and reporting tools Radar's team relies on.",
     description:
-      "As an AI Engineering Intern on the Radar team, independently traced and fixed production bugs in a TypeScript/C++ web-scraping platform, backing each fix with new automated tests rather than just patching the symptom.",
-    techStack: ["TypeScript", "C++", "Vitest", "PostgreSQL", "Claude Code"],
+      "As an AI Engineering Intern on the Radar team (May-Aug 2026), independently diagnosed and fixed production bugs in a TypeScript/C++ platform, then took on broader ownership - authoring a scoring-model design spec, building AI-driven customer personas, and shipping internal reporting tooling, all backed by automated tests.",
+    techStack: ["TypeScript", "C++", "Python", "Vitest", "PostgreSQL", "Claude Code"],
     metrics: [
-      "Diagnosed a silent data-loss bug in a database wrapper missing columns (including Stripe billing and tax-nexus fields), shipped the fix across two PRs with 29 new unit tests",
-      "Fixed an over-permissive URL-matching pattern in the scraper that was incorrectly capturing non-product pages, merged to production",
-      "Led competitive research on Radar vs. SEMrush/Ahrefs at the CTO's request, surfacing feature gaps and two original UX proposals",
+      "Diagnosed and fixed a data-integrity bug that silently dropped critical account and billing fields during signup, shipping a database migration and 29 regression tests to prevent recurrence",
+      "Built AI-driven synthetic customer personas from real event data and U.S. Census demographics for a client engagement, co-developed with a fellow intern and presented directly to the CEO and CTO",
+      "Authored the design specification for a 7-component AI-discoverability scoring model, defining weighting logic, product-vs-site score renormalization, and a formal analysis of score non-determinism",
     ],
     links: {},
     architecture: [
-      "Traced the data-loss bug from a downstream symptom (missing fields) back to the database wrapper layer using AI-assisted diagnostics",
-      "Reproduced the gap against the production schema, confirming which Stripe billing and tax-nexus columns the wrapper was silently dropping",
-      "Shipped the fix across two PRs and backed it with 29 unit tests to guard against regression",
-      "Separately audited the scraper's URL-matching logic and tightened a pattern that was over-matching non-product pages",
+      "Traced the data-integrity bug from a downstream symptom (missing account/billing fields) back to the signup flow using AI-assisted diagnostics, then designed and shipped a database migration to close the gap",
+      "Modeled synthetic customer personas in Python by combining real event data with U.S. Census demographics, splitting the workload with a fellow intern under a tight client deadline",
+      "Specified a 7-component scoring model for Radar's AI-discoverability score, working through how sub-scores renormalize between product-level and site-level results and where the existing score behaves non-deterministically",
+      "Built a Python reporting pipeline that renders transaction-flow data as both Excel workbooks and HTML diagrams, covering the success, verification-failure, and returns paths merchants actually hit",
     ],
     featured: true,
     confidential: true,
@@ -137,6 +141,7 @@ export const projects: Project[] = [
       demo: "https://shabana-qasemi.github.io",
       github: "https://github.com/shabana-qasemi/shabana-qasemi.github.io",
     },
+    image: "/projects/portfolio-site.jpg",
     architecture: [
       "All content lives in one typed data file (data/portfolio.ts), so copy changes never touch component code",
       "Design tokens are defined as CSS variables in globals.css and consumed through the Tailwind theme config, so both themes share one source of truth",
@@ -158,6 +163,7 @@ export const projects: Project[] = [
       "Mapped coordinate systems to the complex plane, enabling dynamic zoom exploration",
     ],
     links: {},
+    image: "/projects/mandelbrot-set-visualizer.jpg",
     architecture: [
       "Each pixel is mapped from screen space to a point on the complex plane",
       "The escape-time algorithm iterates each point to determine set membership and color",
@@ -245,7 +251,7 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Frontend & UI Systems",
     icon: "Code2",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI", "TanStack Query"],
   },
   {
     category: "Backend & AI Infrastructure",
@@ -254,12 +260,19 @@ export const skillCategories: SkillCategory[] = [
       "Python",
       "FastAPI",
       "LangGraph",
+      "Pydantic",
       "Claude API",
-      "PostgreSQL",
+      "Multi-Agent Systems",
+      "Structured Output",
       "Prompt Engineering",
       "Data Engineering",
       "Web Scraping",
     ],
+  },
+  {
+    category: "Data & Platform Tooling",
+    icon: "Database",
+    skills: ["PostgreSQL", "Prisma", "SQLite", "Stripe API"],
   },
   {
     category: "Systems & Graphics (C++)",
@@ -276,7 +289,7 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Developer Tooling & Workflow",
     icon: "Terminal",
-    skills: ["Git", "GitHub", "Claude Code", "Vitest", "VS Code", "Linux"],
+    skills: ["Git", "GitHub", "GitHub Actions", "pnpm/Turborepo", "Claude Code", "Vitest", "VS Code", "Linux"],
   },
 ];
 
@@ -303,25 +316,23 @@ export const experience: ExperienceItem[] = [
     company: "AgentixPay",
     location: "Remote",
     startDate: "May 2026",
-    endDate: "Present",
+    endDate: "Aug 2026",
     summary:
-      "Debug production systems with AI-assisted tooling, design enterprise data pipelines, and build domain-specific AI personas, reporting directly to the CTO.",
+      "Diagnosed production bugs, built AI-driven data tooling, and authored a scoring-model design spec for Radar - reporting on client-facing work directly to the CEO and CTO.",
     bullets: [
-      "AI-Assisted Diagnostics & Debugging: Utilized terminal-based AI diagnostic tools (Claude Code) to trace execution paths, analyze variable mutations, and resolve 10+ production bugs across frontend and data layers (including subscription state filtering, visibility metrics, and card rendering)",
-      "Data Workflows & Database Loading: Engineered multi-stage data pipelines, generated production-ready datasets based on enterprise ERDs, structured clean CSV files, and executed data loads into PostgreSQL databases",
-      "Cross-Product Systems Collaboration: Participated in technical architecture and pair-programming sessions across core product systems (Radar, Nexus, and Atlas) to maintain data flow integrity and service reliability",
-      "System Mapping & AI Strategy: Engineered domain-specific AI user personas, mapped platform site navigation, and integrated catalog taxonomy classifiers to enrich scraped product data",
+      "Diagnosed and fixed a data-integrity bug that silently dropped critical account and billing fields during user signup, using AI-assisted diagnostic tooling (Claude Code); shipped a database migration and 29 regression tests to prevent recurrence",
+      "Built AI-driven synthetic customer personas for a client using Python, real event data, and U.S. Census demographics, co-developed with a fellow intern; presented directly to the CEO and CTO",
+      "Authored the design specification for a 7-component AI-discoverability scoring model (Radar), defining weighting logic, product-vs-site score renormalization, and a formal analysis of score non-determinism - establishing the technical foundation for an LLM-driven scoring redesign",
+      "Built Python-based transaction-flow visualization tooling, generating Excel workbooks and HTML flow diagrams covering success, verification-failure, and returns paths at the CTO's request - supporting merchant onboarding and data QC, using Claude Code as an AI pair-programming agent",
     ],
     tech: [
-      "Data Engineering",
-      "Web Scraping",
-      "Prompt Engineering",
-      "Debugging",
-      "Git",
+      "Python",
       "TypeScript",
-      "Database Design",
-      "Programming",
-      "Critical Thinking",
+      "PostgreSQL",
+      "Claude Code",
+      "Data Migration",
+      "AI Personas",
+      "Prompt Engineering",
     ],
   },
   {
@@ -330,10 +341,15 @@ export const experience: ExperienceItem[] = [
     company: "Design Hub, American River College",
     location: "Sacramento, CA",
     startDate: "Fall 2026",
-    endDate: "Upcoming",
-    summary: "Incoming Fall 2026 internship - details to be added once the role begins.",
-    bullets: [],
-    tech: [],
+    endDate: "Present",
+    summary:
+      "Scoping and building a Chrome extension for ARC's MESA department from an open-ended request, owning it from requirements through ship.",
+    bullets: [
+      "Scoping and building a Chrome extension for the campus MESA department from an open-ended, unspecified request",
+      "Independently defined requirements through stakeholder conversations with the program coordinator",
+      "Designing, developing, and testing the extension end-to-end",
+    ],
+    tech: ["JavaScript", "Chrome Extension APIs", "Requirements Gathering"],
   },
   {
     id: "admissions-records",
@@ -345,15 +361,13 @@ export const experience: ExperienceItem[] = [
     summary:
       "Support 50+ students daily with registration, transcripts, and enrollment while maintaining full data accuracy.",
     bullets: [
-      "Assisted 50+ students daily with registration, transcripts, and enrollment processes, improving service efficiency by 33%",
-      "Maintained 100% accuracy while updating student records, ensuring compliance with institutional data standards",
-      "Streamlined administrative workflows by guiding 15+ students daily through digital registration systems",
+      "Support 50+ students daily with registration, transcripts, and enrollment systems, maintaining full accuracy on record updates per institutional data standards",
     ],
     tech: [],
   },
 ];
 
-// Non-technical roles (Walmart, HI-Q-Tronix data entry, ITREB teaching) and the
+// Data Entry Clerk (Hi-Q-Tronix GmbH), ITREB teaching, Walmart, and the
 // Leadership/Recommendations sections were intentionally cut from the main
 // narrative - a portfolio proves technical craft through evidence, a resume
 // lists credentials. Full work history still lives on LinkedIn (linked in the
@@ -397,10 +411,10 @@ export const assistantFaq: FaqEntry[] = [
       "Frontend: React, Next.js, TypeScript, Tailwind CSS, Framer Motion. Backend & AI: Python, FastAPI, LangGraph, the Claude API, PostgreSQL. I also have a C++ background (SFML, multithreading, real-time rendering) from earlier systems projects. Day to day tools: Git, GitHub, Claude Code, VS Code, Linux.",
   },
   {
-    keywords: ["experience", "internship", "agentixpay", "work", "job", "ai engineering", "current role"],
+    keywords: ["experience", "internship", "agentixpay", "design hub", "work", "job", "ai engineering", "current role"],
     question: "What's your work experience?",
     answer:
-      "I'm currently an AI Engineering Intern at AgentixPay - debugging production codebases with Claude Code, designing PostgreSQL data pipelines and ERDs, and building AI personas. I've also worked as a Student Assistant at American River College. Full details are in the Experience timeline.",
+      "I'm currently a Programming Intern at ARC's Design Hub, building a Chrome extension for the campus MESA department. Before that, I was an AI Engineering Intern at AgentixPay (May-Aug 2026) - diagnosing production bugs with Claude Code, building AI-driven customer personas, and authoring a scoring-model design spec for their Radar product. I've also worked as a Student Assistant at American River College since 2025. Full details are in the Experience timeline.",
   },
   {
     keywords: ["education", "school", "college", "degree", "graduate", "studying"],
@@ -415,10 +429,10 @@ export const assistantFaq: FaqEntry[] = [
       "I like understanding how things actually work under the hood - that's true whether I'm writing a fractal renderer from scratch or debugging a production AI system at my internship. AI engineering is where that curiosity meets real-world impact.",
   },
   {
-    keywords: ["design hub", "fall 2026", "upcoming", "next internship"],
-    question: "What's next for you?",
+    keywords: ["design hub", "chrome extension", "mesa", "fall 2026", "current project"],
+    question: "What are you working on right now?",
     answer:
-      "I'm starting a Programming Intern role at Design Hub, American River College in Fall 2026, alongside my current AI Engineering internship.",
+      "I'm a Programming Intern at ARC's Design Hub, scoping and building a Chrome extension for the campus MESA department from an open-ended request - gathering requirements directly from the program coordinator, then designing, building, and testing it end-to-end.",
   },
   {
     keywords: ["contact", "reach", "hire", "available", "hiring"],
