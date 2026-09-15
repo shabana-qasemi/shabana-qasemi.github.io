@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Cool off-white base with a slight blue bias, so it reads chosen alongside the indigo accent. */
+    /* Cool off-white base with a slight blue bias, so it reads chosen alongside the LinkedIn-blue accent. */
     --background: 222 24% 97%;
     --foreground: 228 22% 12%;
 
@@ -20,14 +20,14 @@
     --muted: 220 20% 93%;
     --muted-foreground: 222 10% 42%;
 
-    /* Indigo/blue accent, darkened for AA contrast on a light ground. */
-    --accent: 228 78% 48%;
+    /* LinkedIn blue (#0A66C2) accent - already dark enough for AA contrast on a light ground. */
+    --accent: 210 90% 40%;
     --accent-foreground: 220 25% 98%;
-    --accent-secondary: 213 75% 45%; /* a touch more cyan-leaning - analogous, not a contrasting hue */
+    --accent-secondary: 199 85% 42%; /* a touch more cyan-leaning - analogous, not a contrasting hue */
 
     --border: 220 18% 88%;
     --input: 220 18% 88%;
-    --ring: 228 78% 48%;
+    --ring: 210 90% 40%;
 
     --radius: 0.75rem;
   }
@@ -49,14 +49,14 @@
     --muted: 26 8% 15%;
     --muted-foreground: 30 6% 65%;
 
-    /* Electric indigo/blue - the one cool note in an otherwise warm-neutral scheme. */
-    --accent: 228 85% 64%;
+    /* LinkedIn blue, brightened for the dark ground - the one cool note in an otherwise warm-neutral scheme. */
+    --accent: 210 90% 60%;
     --accent-foreground: 220 30% 98%;
-    --accent-secondary: 213 80% 60%; /* a touch more cyan-leaning - keeps gradients monochromatic-cool, not purple */
+    --accent-secondary: 199 88% 56%; /* a touch more cyan-leaning - keeps gradients monochromatic-cool, not purple */
 
     --border: 26 8% 20%;
     --input: 26 8% 20%;
-    --ring: 228 85% 64%;
+    --ring: 210 90% 60%;
   }
 }
 
