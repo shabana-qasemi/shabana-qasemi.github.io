@@ -39,17 +39,39 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       className="h-full"
     >
       <Card className="flex h-full flex-col overflow-hidden">
-        {/* Visual asset / mockup frame - replace the icon block with a real screenshot or GIF when available. */}
-        <div className="bg-grid relative flex aspect-[16/9] items-center justify-center overflow-hidden border-b border-border/70 bg-gradient-to-br from-accent/15 via-transparent to-accent2/15">
+        {/* Visual asset / mockup frame - a real screenshot when project.image is set, otherwise a decorative icon. */}
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-border/70">
+          {project.image ? (
+            <>
+              <img
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                loading="lazy"
+                className="h-full w-full object-cover object-top"
+              />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-black/45 to-transparent" />
+            </>
+          ) : (
+            <div className="bg-grid flex h-full w-full items-center justify-center bg-gradient-to-br from-accent/15 via-transparent to-accent2/15">
+              <VisualIcon className="h-12 w-12 text-accent/60" strokeWidth={1.25} aria-hidden />
+            </div>
+          )}
           <div className="absolute left-4 top-3 flex items-center gap-1.5" aria-hidden>
-            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/25" />
-            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/25" />
-            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/25" />
+            <span
+              className={`h-2.5 w-2.5 rounded-full ${project.image ? "bg-white/50" : "bg-muted-foreground/25"}`}
+            />
+            <span
+              className={`h-2.5 w-2.5 rounded-full ${project.image ? "bg-white/50" : "bg-muted-foreground/25"}`}
+            />
+            <span
+              className={`h-2.5 w-2.5 rounded-full ${project.image ? "bg-white/50" : "bg-muted-foreground/25"}`}
+            />
           </div>
-          <span className="absolute right-4 top-3 font-mono text-[11px] text-muted-foreground/60">
+          <span
+            className={`absolute right-4 top-3 font-mono text-[11px] ${project.image ? "text-white/80" : "text-muted-foreground/60"}`}
+          >
             ~/{project.id}
           </span>
-          <VisualIcon className="h-12 w-12 text-accent/60" strokeWidth={1.25} aria-hidden />
         </div>
 
         <CardHeader>

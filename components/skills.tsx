@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BrainCircuit, Boxes, Code2, Terminal, Wrench, type LucideIcon } from "lucide-react";
+import { BrainCircuit, Boxes, Code2, Database, Terminal, Wrench, type LucideIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -14,6 +14,7 @@ const iconMap: Record<string, LucideIcon> = {
   BrainCircuit,
   Boxes,
   Terminal,
+  Database,
 };
 
 export function Skills() {
@@ -26,7 +27,7 @@ export function Skills() {
           className="mb-10"
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((group, i) => {
             const Icon = iconMap[group.icon] ?? Code2;
             return (
