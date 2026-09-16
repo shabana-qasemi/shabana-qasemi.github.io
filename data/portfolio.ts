@@ -13,7 +13,7 @@ export const personalInfo = {
   // 2-sentence hero-length version of the tagline above - keep these in sync when the bio changes.
   impactStatement:
     "I build systems people can trust with their data - from a multi-agent AI orchestrator that plans real meals around a real budget, to production fixes and AI tooling shipped inside a live fintech platform. Currently a Programming Intern at ARC's Design Hub, studying AI/ML and Data Engineering at American River College.",
-  status: "Building a Chrome extension for ARC's MESA program as a Programming Intern",
+  status: "Programming Intern at the Design Hub, American River College",
   github: "https://github.com/shabana-qasemi",
   linkedin: "https://www.linkedin.com/in/shabana-qasemi",
   // Set this to enable the Hero's "Copy Email" button - left unset because email was
@@ -32,9 +32,9 @@ export const priorOrganizations = ["AgentixPay", "Design Hub", "American River C
 
 export const navLinks = [
   { label: "About Me", href: "#about" },
-  { label: "Education", href: "#education" },
-  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
   { label: "Connect", href: "#contact" },
 ] as const;
@@ -162,7 +162,7 @@ export const projects: Project[] = [
       "Optimized rendering with multithreading, improving computation speed by 75%",
       "Mapped coordinate systems to the complex plane, enabling dynamic zoom exploration",
     ],
-    links: {},
+    links: { github: "https://github.com/shabana-qasemi/Mandelbrot" },
     image: "/projects/mandelbrot-set-visualizer.jpg",
     architecture: [
       "Each pixel is mapped from screen space to a point on the complex plane",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       "Designed an object-oriented architecture, improving maintainability and scalability",
       "Implemented a rendering pipeline for real-time visualization",
     ],
-    links: {},
+    links: { github: "https://github.com/shabana-qasemi/Particles" },
     architecture: [
       "Each particle is an object tracking position, velocity, and acceleration",
       "A simulation loop updates physics state every frame using discrete time steps",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
       "Designed full encryption/decryption workflows",
       "Validated correctness through brute-force testing",
     ],
-    links: {},
+    links: { github: "https://github.com/shabana-qasemi/RSA-Encryption" },
     architecture: [
       "Key generation selects prime pairs and derives public/private exponents",
       "Modular exponentiation is implemented for fast, correct encryption and decryption",

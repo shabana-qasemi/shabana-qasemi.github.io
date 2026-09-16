@@ -52,12 +52,9 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
-        // Display headings use the mono face too (not a serif) - one consistent
-        // "systems/terminal" typographic identity instead of serif-headline-plus-
-        // tech-tags feeling like two unrelated design languages.
-        serif: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
+        sans: ["Times New Roman", "Times", "serif"],
+        mono: ["Times New Roman", "Times", "serif"],
+        serif: ["Times New Roman", "Times", "serif"],
       },
       keyframes: {
         "accordion-down": {
