@@ -116,6 +116,7 @@ export const projects: Project[] = [
       "Authored the design specification for a 7-component AI-discoverability scoring model, defining weighting logic, product-vs-site score renormalization, and a formal analysis of score non-determinism",
     ],
     links: {},
+    image: "/projects/agentixpay.png",
     architecture: [
       "Traced the data-integrity bug from a downstream symptom (missing account/billing fields) back to the signup flow using AI-assisted diagnostics, then designed and shipped a database migration to close the gap",
       "Modeled synthetic customer personas in Python by combining real event data with U.S. Census demographics, splitting the workload with a fellow intern under a tight client deadline",
